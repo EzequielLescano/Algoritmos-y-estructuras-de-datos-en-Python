@@ -1,15 +1,7 @@
 # 5. Desarrollar una función que permita convertir un número romano en un número decimal.
 
 def romano_a_decimal(romano):
-    # Valores básicos
-    valores = {
-        'I': 1,
-        'V': 5,
-        'X': 10,
-        'L': 50,
-        'C': 100,
-        'D': 500,
-        'M': 1000}
+    valores = {'I': 1,'V': 5,'X': 10,'L': 50,'C': 100,'D': 500,'M': 1000}
     
     total = 0
     for i in range(len(romano)):
@@ -41,13 +33,14 @@ print(romano_a_decimal("IVVXV"))
 
 # b. determinar si la mochila contiene un sable de luz y cuantos objetos fueron necesarios sa-
 # car para encontrarlo;
-                          
+
 # c. Utilizar un vector para representar la mochila.
 
 # def usar_la_fuerza(mochila):
 
 def usar_la_fuerza(mochila, posicion):
     if posicion < 0:
+        
         return "No se encontró el sable"
 
     if mochila[posicion] == "sable de luz":
