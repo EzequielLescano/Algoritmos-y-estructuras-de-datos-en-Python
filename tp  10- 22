@@ -1,1 +1,168 @@
 
+from typing import Any
+
+class Queue:
+
+    def __init__(self):
+        self.__elements = []
+
+    def arrive(self, value: Any) -> None: 
+        self.__elements.append(value)
+
+    def attention(self) -> Any:
+        return self.__elements.pop(0)
+
+    def size(self) -> int:
+        return len(self.__elements)
+
+    def on_front(self) -> Any:
+        return self.__elements[0]
+
+    def move_to_end(self) -> Any:
+        value = self.__elements.pop(0)
+        self.__elements.append(value)
+        return value
+
+    def show(self) -> None:
+        for i in range(len(self.__elements)):
+            value = self.move_to_end()
+            print(value)
+            
+            
+------------------------------------------------
+
+
+
+
+# # 10. Dada una cola con las notificaciones de las aplicaciones de redes sociales de un Smartphone,
+# # de las cual se cuenta con la hora de la notificación, la aplicación que la emitió y el mensaje,
+# # resolver las siguientes actividades:
+# # a. escribir una función que elimine de la cola todas las notificaciones de Facebook;
+# # b. escribir una función que muestre todas las notificaciones de Twitter, cuyo mensaje incluya
+# # la palabra ‘Python’, si perder datos en la cola;
+# # c. utilizar una pila para almacenar temporáneamente las notificaciones producidas entre las
+# # 11:43 y las 15:57, y determinar cuántas son.
+# from Cola import Queue
+# from typing import Any
+
+# notificaciones_ejemplo = [
+#         {'hora': '10:15', 'app': 'Facebook', 'mensaje': 'A Juan le gustó tu foto.'},
+#         {'hora': '11:50', 'app': 'Twitter', 'mensaje': 'Aprendiendo Python en 2026!'},
+#         {'hora': '13:00', 'app': 'WhatsApp', 'mensaje': '¿Almorzamos?'},
+#         {'hora': '14:20', 'app': 'Facebook', 'mensaje': 'Cumpleaños de María hoy.'},
+#         {'hora': '15:10', 'app': 'Twitter', 'mensaje': 'Mundo Python avanzado.'},
+#         {'hora': '16:45', 'app': 'Twitter', 'mensaje': 'Buenas tardes a todos.'},
+#     ]
+# cola_cargada=Queue()
+
+# def cargar_pila (cola_a_cargar,vector):
+#     for dato in notificaciones_ejemplo:
+#         cola_cargada.arrive(dato)
+
+# #a- escribir una función que elimine de la cola todas las notificaciones de Facebook;
+# def reorden(cola:Queue):
+#     aux=Queue()
+#     for dato in cola:
+#         if(dato!=[]):
+#             aux.arrive(dato)
+    
+    
+# def eliminar_facebook(cola:Queue, cola_Removidos:Queue):
+#     for datos in range(cola.size):
+#         dato=cola.attention()
+#         if dato["app"]=="Facebook":
+#             cola_Removidos.arrive(dato)
+# #b- escribir una función que muestre todas las notificaciones de Twitter, cuyo mensaje incluya        
+# # la palabra ‘Python’, si perder datos en la cola;
+# def twitter_sin_remover(cola:Queue):
+#     for dato in cola:
+#         if dato["app"]=="Twitter":
+#             if "Python" in dato["mensaje"]:
+#                 print(f"hora: {dato["hora"]}, app: {dato["app"]}, mensaje: {dato["mensaje"]}")
+                
+# # c. utilizar una pila para almacenar temporáneamente las notificaciones producidas entre las
+# # 11:43 y las 15:57, y determinar cuántas son.
+# def rangoNotif(pila):
+#     aux=Queue()
+#     for dato in pila:
+#         if dato["hora"]>"11:42" and dato["hora"]<"15:58":
+#             aux.arrive(dato)
+#     return aux
+
+
+# cargar_pila(cola_cargada,notificaciones_ejemplo)
+# cola_cargada.show()
+# twitter_sin_remover(cola_cargada)
+# print(f"Lista de notificaciones en un rango de 11:43 a 15:57 {rangoNotif(cola_cargada)}")
+
+
+# Se tienen una cola con personajes de Marvel Cinematic Universe (MCU), de los cuales se cono-
+# ce el nombre del personaje, el nombre del superhéroe y su género (Masculino M y Femenino
+
+# F) –por ejemplo {Tony Stark, Iron Man, M}, {Steve Rogers, Capitán América, M}, {Natasha Ro-
+# manoff, Black Widow, F}, etc., desarrollar un algoritmo que resuelva las siguientes actividades:
+
+# a. determinar el nombre del personaje de la superhéroe Capitana Marvel;
+# b. mostrar los nombre de los superhéroes femeninos;
+# c. mostrar los nombres de los personajes masculinos;
+# d. determinar el nombre del superhéroe del personaje Scott Lang;
+# e. mostrar todos datos de los superhéroes o personaje cuyos nombres comienzan
+# con la letra S;
+# f. determinar si el personaje Carol Danvers se encuentra en la cola e indicar su nombre
+# de superhéroes.
+
+
+
+
+# from Cola import Queue
+# from typing import Any
+
+# colaCargada=Queue()
+# def cargar(cola):
+#     cola.arrive["nombre":"Tony Stark","heroe":"Iron Man","genero":"M"]
+#     cola.arrive["nombre":"Natasha Romanoff","heroe":"Black Widow","genero":"F"]
+#     cola.arrive["nombre":"Steve Rogers","heroe":"Capitán América","genero":"M"]
+#     cola.arrive["nombre":"Wanda Maximoff","heroe":"Scarlet Witch","genero":"F"]
+#     cola.arrive["nombre":"Carol Danvers","heroe":"Capitana Marvel","genero":"F"]
+
+# # a. determinar el nombre del personaje de la superhéroe Capitana Marvel;
+# def nombrePers(cola, hBuscado=any):
+#     for dato in cola:
+#         if dato["heroe"] == hBuscado:
+#             return dato["nombre"]
+        
+# # b. mostrar los nombre de los superhéroes femeninos;
+# def buscarXsexo(cola,HoM=any):
+#     for dato in cola:
+#         if dato["genero"]==HoM:
+#             return dato["nombre"]
+
+# # c. mostrar los nombres de los personajes masculinos;
+# #Lo llamo desde buscarXsexo(colaCargada,"M")
+
+# # d. determinar el nombre del superhéroe del personaje Scott Lang;
+# def buscarXnombre(cola,nombre=any):
+#     for dato in cola:
+#         if dato["nombre"]==nombre:
+#             return dato["heroe"]
+
+# # e. mostrar todos datos de los superhéroes o personaje cuyos nombres comienzan
+# # con la letra S;
+# def comienzaConLetra(cola,letra):
+#     for dato in cola:
+#         if dato["heroe"][0].upper== letra.upper:
+#             return dato["heroe"]
+
+# # f. determinar si el personaje Carol Danvers se encuentra en la cola e indicar su nombre
+# # de superhéroes.
+# #llamo a la función buscarXnombre(colaCargada,"Carol Danvers")
+
+
+# cargar(colaCargada)
+# nombrePers(colaCargada,"Capitana Marvel")
+# buscarXsexo(colaCargada,"F")
+# buscarXsexo(colaCargada,"M")
+# buscarXnombre(colaCargada,"Scott Lang")
+# comienzaConLetra(colaCargada,"S")
+# buscarXnombre(colaCargada,"Carol Danvers")
+
