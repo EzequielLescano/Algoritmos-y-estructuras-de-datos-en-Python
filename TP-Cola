@@ -1,0 +1,263 @@
+from queue import Queue
+from heap import HeapMax
+
+# 10. Dada una cola con las notificaciones de las 
+# aplicaciones de redes sociales de un Smartphone,
+# de las cual se cuenta con la hora de la notificación, 
+# la aplicación que la emitió y el mensaje,
+# resolver las siguientes actividades:
+# a. escribir una función que elimine de la cola todas las 
+# notificaciones de Facebook;
+# b. escribir una función que muestre todas las notificaciones 
+# de Twitter, cuyo mensaje incluya
+# la palabra ‘Python’, si perder datos en la cola;
+# c. utilizar una pila para almacenar temporáneamente las 
+# notificaciones producidas entre las
+# 11:43 y las 15:57, y determinar cuántas son.
+
+# Notificaciones=Queue()
+
+# def cargarNotif(cola):
+#     stop=True
+#     control="Si"
+#     while stop == True:
+#         hora=input("Ingrese Hora")
+#         Notificacion=input("Ingrese Notificaciones")
+#         mensaje=input("mensaje")
+            
+#         Notificaciones ={
+#             "hora":hora,
+#             "notificacion": Notificacion,
+#             "mensaje":mensaje
+#         }
+        
+#         cola.arrive(Notificaciones)
+#         control = input("¡Seguir cargando?: Si/No")
+
+# # a. escribir una función que elimine de la cola todas las 
+# # notificaciones de Facebook;
+# filtro = input("Notificación a filtrar") #Facebook 
+# def eliminarPorFiltro(cola,filtro):
+#     aux_Cola= Queue()
+#     while cola.size > 0:    
+#         dato = cola.attention()
+#         if dato["notificacion"].upper() != filtro.upper():
+#             aux_Cola.arrive(dato)
+#         else:
+#             return
+#     while aux_Cola.size > 0:
+#         cola.arrive(aux_Cola.attention())            
+
+# # b. escribir una función que muestre todas las notificaciones 
+# # de Twitter, cuyo mensaje incluya
+# # la palabra ‘Python’, si perder datos en la cola;
+
+# def mostrarFiltro(cola,filtroNotif,filtroPalabra):
+#     aux_Cola=Queue()
+#     while cola.size > 0:
+#         dato = cola.attention()
+#         if dato["notificacion"].upper() == filtroNotif.upper() and filtroPalabra.upper() in dato["mensaje"].upper():
+#             print(dato)
+#         aux_Cola.arrive(dato) 
+#     while aux_Cola.size>0:
+#         cola.arrive(aux_Cola.attention())
+        
+# # c. utilizar una pila para almacenar temporáneamente las 
+# # notificaciones producidas entre las
+# # 11:43 y las 15:57, y determinar cuántas son.                      
+# def rangoHora(cola, stack, hora1, hora2):
+#     aux_cola = Queue()  
+#     contador = 0        
+#     while cola.size > 0:
+#         dato = cola.attention()
+        
+#         if hora1 <= dato["hora"] <= hora2:
+#             stack.push(dato)  
+#             contador += 1
+
+#         aux_cola.arrive(dato)
+#     while aux_cola.size > 0:
+#         cola.arrive(aux_cola.attention())        
+#     print(f"Cantidad de notificaciones entre las {hora1} y las {hora2}: {contador}")
+#     return contador
+
+#-----------------------------------------------------------------------------------------------------------------------------#
+
+# # 16. Utilice cola de prioridad, para atender la cola de 
+# # impresión tomando en cuenta el siguiente
+# # criterio (1- empleados, 2- staff de tecnologías de la información
+# # “TI”, 3- gerente), y resuelva la
+# # siguiente situación:
+# # a. cargue tres documentos de empleados (cada documento 
+# # se representa solamente con
+# # un nombre).
+# # b. imprima el primer documento de la cola 
+# # (solamente mostrar el nombre de este por pantalla).
+# # c. cargue dos documentos del staff de TI.
+# # d. cargue un documento del gerente.
+# # e. imprima los dos primeros documentos de la cola.
+# # f. cargue dos documentos de empleados y uno de gerente.
+# # g. imprima todos los documentos de la cola de impresión.
+
+# cola_impresion = HeapMax()
+
+# # a. cargue tres documentos de empleados (cada documento se representa solamente con
+# # un nombre).
+
+
+# cola_impresion.arrive("Empleados", 1)
+# cola_impresion.arrive("Empleados2", 1)
+# cola_impresion.arrive("Empleados3", 1)
+# # b. imprima el primer documento de la cola 
+# print("primer documento:")
+# prioridad, documento = cola_impresion.attention()
+# print(documento)
+
+# # c. Cargue dos documentos del staff de TI (prioridad 2)
+# cola_impresion.arrive("Staff TI", 2)
+# cola_impresion.arrive("STAFF TI_2", 2)
+
+# # d. Cargue un documento del gerente (prioridad 3)
+# cola_impresion.arrive("Gerente", 3)
+
+# # e. Imprima los dos primeros documentos de la cola
+# for dato in range(2):
+#     if cola_impresion.size() > 0:
+#         dato, documento = cola_impresion.attention()
+#         print(documento)
+
+# # f. Cargue dos documentos de empleados y uno de gerente
+# cola_impresion.arrive("EmpleadoFA", 1)
+# cola_impresion.arrive("EmpleadoFB", 1)
+# cola_impresion.arrive("GerenteA", 3)
+
+# # g. Imprima todos los documentos de la cola de impresión
+# while cola_impresion.size() > 0:
+#     prioridad, documento = cola_impresion.attention()
+#     print(f"prioridad: {prioridad}, documento: {documento}")
+    
+#-----------------------------------------------------------------------------------------------------------------------------#
+
+# 22. Se tienen una cola con personajes de Marvel Cinematic Universe (MCU), de los cuales se cono-
+# ce el nombre del personaje, el nombre del superhéroe y su género (Masculino M y Femenino
+
+# F) –por ejemplo {Tony Stark, Iron Man, M}, {Steve Rogers, Capitán América, M}, {Natasha Ro-
+# manoff, Black Widow, F}, etc., desarrollar un algoritmo que resuelva las siguientes actividades:
+
+# a. determinar el nombre del personaje de la superhéroe Capitana Marvel;
+# b. mostrar los nombre de los superhéroes femeninos;
+# c. mostrar los nombres de los personajes masculinos;
+# d. determinar el nombre del superhéroe del personaje Scott Lang;
+# e. mostrar todos datos de los superhéroes o personaje cuyos nombres comienzan
+# con la letra S;
+# f. determinar si el personaje Carol Danvers se encuentra en la cola e indicar su nombre
+# de superhéroes.
+
+# personajes_marvel = [
+#     {'nombre': 'Tony Stark', 'superheroe': 'Iron Man', 'genero': 'M'},
+#     {'nombre': 'Steve Rogers', 'superheroe': 'Capitán América', 'genero': 'M'},
+#     {'nombre': 'Natasha Romanoff', 'superheroe': 'Black Widow', 'genero': 'F'},
+#     {'nombre': 'Wanda Maximoff', 'superheroe': 'Bruja Escarlata', 'genero': 'F'},
+#     {'nombre': 'Thor Odinson', 'superheroe': 'Thor', 'genero': 'M'},
+#     {'nombre': 'Carol Danvers', 'superheroe': 'Capitana Marvel', 'genero': 'F'},
+#     {'nombre': 'Bruce Banner', 'superheroe': 'Hulk', 'genero': 'M'},
+#     {'nombre': 'Peter Parker', 'superheroe': 'Spider-Man', 'genero': 'M'},
+#     {'nombre': 'Scott Lang', 'superheroe': 'Ant-Man', 'genero': 'M'}
+# ]
+
+# cola_marvel=Queue()
+
+# def cargar(cola_marvel,personajes_marvel):
+#     for element in personajes_marvel:
+#         cola_marvel.arrive(element)
+    
+
+# # a. determinar el nombre del personaje de la superhéroe Capitana Marvel;
+
+# def nom_cap_marvel(cola_marvel):
+#     for i in range(cola_marvel.size()):
+#         personaje=cola_marvel.move_to_end()
+#         if personaje['superheroe'] == 'Capitana Marvel':   
+#             nombre=personaje['nombre']
+#             print(f'El nombre de la Capitana Marvel es {nombre}')
+
+
+# # b. mostrar los nombre de los superhéroes femeninos;
+
+# def nom_femeninos(cola_marvel):
+#     for i in range(cola_marvel.size()):
+#         personaje_femenino=cola_marvel.move_to_end()
+#         if personaje_femenino['genero'] == 'F':   
+#             nombre=personaje_femenino['nombre']
+#             print(f'Los nombres de los personajes femeninos son --> {nombre}')
+
+
+# # c. mostrar los nombres de los personajes masculinos;
+
+# def nom_masculinos(cola_marvel):
+#     for i in range(cola_marvel.size()):
+#         personaje_masculinos=cola_marvel.move_to_end()
+#         if personaje_masculinos['genero'] == 'M':   
+#             nombre=personaje_masculinos['nombre']
+#             print(f'Los nombres de los personajes masculinos son --> {nombre}')
+
+
+# # d. determinar el nombre del superhéroe del personaje Scott Lang;
+
+# def nom_Scott(cola_marvel):
+#     for i in range(cola_marvel.size()):
+#         personaje_scott=cola_marvel.move_to_end()
+#         if personaje_scott['nombre'] == 'Scott Lang':   
+#             nombre_super=personaje_scott['superheroe']
+#             print(f'El nombre del superheroe de Scott Lang es {nombre_super}')
+
+
+# # e. mostrar todo los datos de los superhéroes o personaje cuyos nombres comienzan
+# # con la letra S;
+
+# def nom_s(cola_marvel):
+#     for i in range(cola_marvel.size()):
+#         per_s=cola_marvel.move_to_end()
+#         if 'S' in per_s['superheroe']:
+#             print(per_s)
+            
+
+# # f. determinar si el personaje Carol Danvers se encuentra en la cola e indicar su nombre
+# # de superhéroes.
+
+# def nom_carol(cola_marvel):
+#     for i in range(cola_marvel.size()):
+#         personaje_carol=cola_marvel.move_to_end()
+#         if personaje_carol['nombre'] == 'Carol Danvers':   
+#             nombre_super=personaje_carol['superheroe']
+#             print(f'Carol Danvers se encuentra en la cola y el nombre de superheroe es {nombre_super}')
+
+# cargar(cola_marvel,personajes_marvel)  
+   
+# nom_cap_marvel(cola_marvel)
+
+# print("")
+
+# nom_femeninos(cola_marvel)
+
+# print("")
+
+# nom_masculinos(cola_marvel)
+
+# print("")
+
+# nom_Scott(cola_marvel)
+
+# print("")
+
+# nom_s(cola_marvel)
+
+# print("")
+
+# nom_carol(cola_marvel)
+
+
+
+# print("")
+# print("ejercicio 16")
+# print("")
